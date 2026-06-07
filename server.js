@@ -6,8 +6,10 @@ const cors = require('cors');
 const fetch = require('node-fetch');
 const app = express();
 
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+}));
 
 app.get('/transcript/:videoId', async (req, res) => {
   const { videoId } = req.params;
